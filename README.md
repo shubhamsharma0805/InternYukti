@@ -35,9 +35,10 @@ git clone https://github.com/your-username/InternYukti.git
 
 ```
 InternYukti/
-├── SIH.html        # Main HTML file
-├── SIH.css         # Styles
-├── SIH.js          # JavaScript logic
+├── index.html      # Main HTML file
+├── style.css       # Styles
+├── script.js       # JavaScript logic
+├── vercel.json     # Vercel configuration
 └── README.md       # Project documentation
 ```
 
