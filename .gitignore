@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 node_modules
 .idea
@@ -6,3 +7,34 @@ package-lock.json
 .vscode/
 .idea/
 vite.config.*s.*
+=======
+```plaintext
+# filepath: .gitignore
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Operating System
+.DS_Store
+Thumbs.db
+```
+>>>>>>> 53bee5450ac2db4adc6a6532d31fb36de05d77f4

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 
@@ -18,4 +19,707 @@
   <script type="module" src="/src/index.jsx"></script>
 </body>
 
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternYukti</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-brain"></i>
+                    <span>InternYukti</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#" onclick="showPage('about')">About</a>
+                    <a href="#" onclick="showPage('contact')">Contact</a>
+                    <button class="btn-primary" onclick="showPage('profile-setup')">Get Started</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        AI-Powered Internship
+                        <span class="gradient-text">Recommendations</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Discover perfect internship opportunities through our advanced AI matching system. 
+                        Get personalized recommendations based on your skills, interests, and career goals.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10,000+</div>
+                            <div class="stat-label">Active Internships</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Partner Companies</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn-primary btn-large" onclick="showPage('profile-setup')">
+                            <i class="fas fa-rocket"></i>
+                            Start Your Journey
+                        </button>
+                        <button class="btn-secondary btn-large" onclick="showPage('browse')">
+                            <i class="fas fa-search"></i>
+                            Browse Internships
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-code"></i>
+                        <span>Software Development</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Data Analytics</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-palette"></i>
+                        <span>UI/UX Design</span>
+                    </div>
+                    <div class="floating-card card-4">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Digital Marketing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose Our Platform?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI-Powered Matching</h3>
+                        <p>Advanced algorithms analyze your profile to find the perfect internship matches</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Verified Companies</h3>
+                        <p>All partner companies are verified and committed to quality internship programs</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Career Growth</h3>
+                        <p>Track your progress and get personalized career development recommendations</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Support</h3>
+                        <p>Connect with mentors and peers in your field for guidance and networking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Setup Page -->
+    <div id="profile-setup" class="page">
+        <div class="profile-setup-container">
+            <div class="setup-header">
+                <button class="back-btn" onclick="showPage('landing-page')">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h1>Create Your Profile</h1>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="step-indicator">
+                    <span>Step <span id="current-step">1</span> of 4</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Basic Information -->
+            <div class="setup-step active" id="step-1">
+                <div class="step-content">
+                    <h2>Basic Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <select id="location">
+                                <option value="">Select your location</option>
+                                <option value="mumbai">Mumbai</option>
+                                <option value="delhi">Delhi</option>
+                                <option value="bangalore">Bangalore</option>
+                                <option value="hyderabad">Hyderabad</option>
+                                <option value="pune">Pune</option>
+                                <option value="chennai">Chennai</option>
+                                <option value="kolkata">Kolkata</option>
+                                <option value="ahmedabad">Ahmedabad</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Education -->
+            <div class="setup-step" id="step-2">
+                <div class="step-content">
+                    <h2>Education Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Current Education Level</label>
+                            <select id="educationLevel">
+                                <option value="">Select education level</option>
+                                <option value="undergraduate">Undergraduate</option>
+                                <option value="postgraduate">Postgraduate</option>
+                                <option value="diploma">Diploma</option>
+                                <option value="phd">PhD</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Field of Study</label>
+                            <select id="fieldOfStudy">
+                                <option value="">Select your field</option>
+                                <option value="computer-science">Computer Science</option>
+                                <option value="information-technology">Information Technology</option>
+                                <option value="electronics">Electronics & Communication</option>
+                                <option value="mechanical">Mechanical Engineering</option>
+                                <option value="civil">Civil Engineering</option>
+                                <option value="business">Business Administration</option>
+                                <option value="commerce">Commerce</option>
+                                <option value="arts">Arts & Humanities</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>University/College</label>
+                            <input type="text" id="university" placeholder="Enter your university/college name">
+                        </div>
+                        <div class="form-group">
+                            <label>CGPA/Percentage</label>
+                            <input type="text" id="cgpa" placeholder="Enter your CGPA or percentage">
+                        </div>
+                        <div class="form-group">
+                            <label>Graduation Year</label>
+                            <select id="graduationYear">
+                                <option value="">Select year</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Skills & Interests -->
+            <div class="setup-step" id="step-3">
+                <div class="step-content">
+                    <h2>Skills & Interests</h2>
+                    <div class="skills-section">
+                        <h3>Technical Skills</h3>
+                        <div class="skills-grid" id="technical-skills">
+                            <div class="skill-tag" data-skill="javascript">JavaScript</div>
+                            <div class="skill-tag" data-skill="python">Python</div>
+                            <div class="skill-tag" data-skill="java">Java</div>
+                            <div class="skill-tag" data-skill="react">React</div>
+                            <div class="skill-tag" data-skill="nodejs">Node.js</div>
+                            <div class="skill-tag" data-skill="html-css">HTML/CSS</div>
+                            <div class="skill-tag" data-skill="sql">SQL</div>
+                            <div class="skill-tag" data-skill="mongodb">MongoDB</div>
+                            <div class="skill-tag" data-skill="git">Git</div>
+                            <div class="skill-tag" data-skill="aws">AWS</div>
+                        </div>
+                    </div>
+                    <div class="skills-section">
+                        <h3>Soft Skills</h3>
+                        <div class="skills-grid" id="soft-skills">
+                            <div class="skill-tag" data-skill="communication">Communication</div>
+                            <div class="skill-tag" data-skill="leadership">Leadership</div>
+                            <div class="skill-tag" data-skill="teamwork">Teamwork</div>
+                            <div class="skill-tag" data-skill="problem-solving">Problem Solving</div>
+                            <div class="skill-tag" data-skill="creativity">Creativity</div>
+                            <div class="skill-tag" data-skill="time-management">Time Management</div>
+                            <div class="skill-tag" data-skill="adaptability">Adaptability</div>
+                            <div class="skill-tag" data-skill="critical-thinking">Critical Thinking</div>
+                        </div>
+                    </div>
+                    <div class="interests-section">
+                        <h3>Areas of Interest</h3>
+                        <div class="interests-grid" id="interests">
+                            <div class="interest-card" data-interest="web-development">
+                                <i class="fas fa-code"></i>
+                                <span>Web Development</span>
+                            </div>
+                            <div class="interest-card" data-interest="mobile-development">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Mobile Development</span>
+                            </div>
+                            <div class="interest-card" data-interest="data-science">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Data Science</span>
+                            </div>
+                            <div class="interest-card" data-interest="ui-ux">
+                                <i class="fas fa-palette"></i>
+                                <span>UI/UX Design</span>
+                            </div>
+                            <div class="interest-card" data-interest="digital-marketing">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Digital Marketing</span>
+                            </div>
+                            <div class="interest-card" data-interest="cybersecurity">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Cybersecurity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Preferences -->
+            <div class="setup-step" id="step-4">
+                <div class="step-content">
+                    <h2>Internship Preferences</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Preferred Work Mode</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="workMode" value="remote">
+                                    <span class="radio-custom"></span>
+                                    Remote
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="workMode" value="onsite">
+                                    <span class="radio-custom"></span>
+                                    On-site
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="workMode" value="hybrid">
+                                    <span class="radio-custom"></span>
+                                    Hybrid
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Internship Duration</label>
+                            <select id="duration">
+                                <option value="">Select duration</option>
+                                <option value="1-3">1-3 months</option>
+                                <option value="3-6">3-6 months</option>
+                                <option value="6-12">6-12 months</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Expected Stipend (per month)</label>
+                            <select id="stipend">
+                                <option value="">Select range</option>
+                                <option value="0-10000">₹0 - ₹10,000</option>
+                                <option value="10000-25000">₹10,000 - ₹25,000</option>
+                                <option value="25000-50000">₹25,000 - ₹50,000</option>
+                                <option value="50000+">₹50,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Availability</label>
+                            <select id="availability">
+                                <option value="">Select availability</option>
+                                <option value="immediate">Immediate</option>
+                                <option value="1-month">Within 1 month</option>
+                                <option value="2-months">Within 2 months</option>
+                                <option value="3-months">Within 3 months</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setup-actions">
+                <button class="btn-secondary" id="prev-btn" onclick="previousStep()" style="display: none;">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <button class="btn-primary" id="next-btn" onclick="nextStep()">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn-primary" id="complete-btn" onclick="completeProfile()" style="display: none;">
+                    <i class="fas fa-check"></i>
+                    Complete Profile
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard" class="page">
+        <nav class="dashboard-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-brain"></i>
+                    <span>InternYukti</span>
+                </div>
+                <div class="nav-menu">
+                    <a href="#" class="nav-item active" onclick="showDashboardView('overview')">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardView('browse')">
+                        <i class="fas fa-search"></i>
+                        Browse
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardView('saved')">
+                        <i class="fas fa-bookmark"></i>
+                        Saved
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardView('applications')">
+                        <i class="fas fa-file-alt"></i>
+                        Applications
+                    </a>
+                    <a href="#" class="nav-item" onclick="showDashboardView('profile')">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </a>
+                </div>
+                <div class="nav-user">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span id="user-name">John Doe</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Dashboard Overview -->
+        <div id="dashboard-overview" class="dashboard-view active">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <h1>Welcome back, <span id="welcome-name">John</span>!</h1>
+                    <p>Here's your personalized internship dashboard</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">24</div>
+                            <div class="stat-label">Profile Views</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Applications Sent</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-bookmark"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Saved Internships</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Profile Strength</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="main-content">
+                        <div class="section">
+                            <div class="section-header">
+                                <h2>Recommended for You</h2>
+                                <button class="btn-secondary" onclick="showDashboardView('browse')">View All</button>
+                            </div>
+                            <div class="internships-grid" id="recommended-internships">
+                                <!-- Internships will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <div class="section-header">
+                                <h2>Recent Applications</h2>
+                                <button class="btn-secondary" onclick="showDashboardView('applications')">View All</button>
+                            </div>
+                            <div class="applications-list" id="recent-applications">
+                                <!-- Applications will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar">
+                        <div class="profile-strength-card">
+                            <h3>Profile Strength</h3>
+                            <div class="strength-meter">
+                                <div class="strength-fill" style="width: 95%"></div>
+                            </div>
+                            <div class="strength-score">95%</div>
+                            <div class="strength-tips">
+                                <div class="tip completed">
+                                    <i class="fas fa-check"></i>
+                                    Complete basic information
+                                </div>
+                                <div class="tip completed">
+                                    <i class="fas fa-check"></i>
+                                    Add skills and interests
+                                </div>
+                                <div class="tip">
+                                    <i class="fas fa-plus"></i>
+                                    Add project portfolio
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="trending-card">
+                            <h3>Trending Internships</h3>
+                            <div class="trending-list">
+                                <div class="trending-item">
+                                    <div class="trending-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="trending-content">
+                                        <div class="trending-title">Frontend Developer</div>
+                                        <div class="trending-company">TechCorp</div>
+                                    </div>
+                                </div>
+                                <div class="trending-item">
+                                    <div class="trending-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="trending-content">
+                                        <div class="trending-title">Data Analyst</div>
+                                        <div class="trending-company">DataFlow</div>
+                                    </div>
+                                </div>
+                                <div class="trending-item">
+                                    <div class="trending-icon">
+                                        <i class="fas fa-palette"></i>
+                                    </div>
+                                    <div class="trending-content">
+                                        <div class="trending-title">UI/UX Designer</div>
+                                        <div class="trending-company">DesignHub</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Browse Internships -->
+        <div id="dashboard-browse" class="dashboard-view">
+            <div class="dashboard-container">
+                <div class="browse-header">
+                    <h1>Browse Internships</h1>
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search internships, companies, skills...">
+                    </div>
+                </div>
+
+                <div class="filters-section">
+                    <div class="filters-row">
+                        <select id="location-filter">
+                            <option value="">All Locations</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="hyderabad">Hyderabad</option>
+                        </select>
+                        <select id="domain-filter">
+                            <option value="">All Domains</option>
+                            <option value="technology">Technology</option>
+                            <option value="design">Design</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="finance">Finance</option>
+                        </select>
+                        <select id="stipend-filter">
+                            <option value="">All Stipends</option>
+                            <option value="0-10000">₹0 - ₹10,000</option>
+                            <option value="10000-25000">₹10,000 - ₹25,000</option>
+                            <option value="25000-50000">₹25,000 - ₹50,000</option>
+                        </select>
+                        <select id="workmode-filter">
+                            <option value="">All Work Modes</option>
+                            <option value="remote">Remote</option>
+                            <option value="onsite">On-site</option>
+                            <option value="hybrid">Hybrid</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="browse-content">
+                    <div class="internships-list" id="all-internships">
+                        <!-- Internships will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Saved Internships -->
+        <div id="dashboard-saved" class="dashboard-view">
+            <div class="dashboard-container">
+                <div class="section-header">
+                    <h1>Saved Internships</h1>
+                    <div class="saved-count">
+                        <span id="saved-count">0</span> internships saved
+                    </div>
+                </div>
+                <div class="internships-list" id="saved-internships">
+                    <!-- Saved internships will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications -->
+        <div id="dashboard-applications" class="dashboard-view">
+            <div class="dashboard-container">
+                <div class="section-header">
+                    <h1>My Applications</h1>
+                    <div class="applications-stats">
+                        <span class="stat-item">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Total</span>
+                        </span>
+                        <span class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Pending</span>
+                        </span>
+                        <span class="stat-item">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Shortlisted</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="applications-list" id="all-applications">
+                    <!-- Applications will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile View -->
+        <div id="dashboard-profile" class="dashboard-view">
+            <div class="dashboard-container">
+                <div class="profile-header">
+                    <h1>My Profile</h1>
+                    <button class="btn-primary">
+                        <i class="fas fa-edit"></i>
+                        Edit Profile
+                    </button>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-section">
+                        <h2>Basic Information</h2>
+                        <div class="profile-info">
+                            <div class="info-item">
+                                <label>Full Name</label>
+                                <span id="profile-name">John Doe</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Email</label>
+                                <span id="profile-email">john.doe@email.com</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Phone</label>
+                                <span id="profile-phone">+91 9876543210</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Location</label>
+                                <span id="profile-location">Mumbai</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-section">
+                        <h2>Education</h2>
+                        <div class="profile-info">
+                            <div class="info-item">
+                                <label>Education Level</label>
+                                <span id="profile-education">Undergraduate</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Field of Study</label>
+                                <span id="profile-field">Computer Science</span>
+                            </div>
+                            <div class="info-item">
+                                <label>University</label>
+                                <span id="profile-university">IIT Mumbai</span>
+                            </div>
+                            <div class="info-item">
+                                <label>CGPA</label>
+                                <span id="profile-cgpa">8.5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-section">
+                        <h2>Skills</h2>
+                        <div class="skills-display" id="profile-skills">
+                            <!-- Skills will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Internship Detail Modal -->
+    <div id="internship-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Internship Title</h2>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+>>>>>>> 53bee5450ac2db4adc6a6532d31fb36de05d77f4
 </html>
