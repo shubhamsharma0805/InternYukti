@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../components/ui/Header';
 import LanguageSwitcher from '../../components/ui/LanguageSwitcher';
 import VoiceInputToggle from '../../components/ui/VoiceInputToggle';
-import MetricCard from './components/MetricCard';
-import AnalyticsChart from './components/AnalyticsChart';
-import QuickActionTiles from './components/QuickActionTiles';
-import ActivityFeed from './components/ActivityFeed';
-import AlertNotifications from './components/AlertNotifications';
-import NavigationSidebar from './components/NavigationSidebar';
+import MetricCard from "./component/MetricCard.jsx";
+import AnalyticsChart from "./component/AnalyticsChart.jsx";
+import QuickActionTiles from "./component/QuickActionTiles.jsx";
+import ActivityFeed from './component/ActivityFeed';
+import AlertNotifications from './component/alertNotification';
+import NavigationSidebar from './component/NavigationSidebar.jsx';
 
 const AdminDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
     if (userData) {
       const user = JSON.parse(userData);
       if (!user?.email?.includes('admin')) {
-        navigate('/internship-results');
+        navigate('/admin-dashboard');
         return;
       }
     }

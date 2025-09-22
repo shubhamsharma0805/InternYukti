@@ -28,20 +28,23 @@ const Login = () => {
   };
 
   useEffect(() => {
-    // Check if user is already authenticated
     const isAuthenticated = localStorage.getItem('isAuthenticated');
-    if (isAuthenticated === 'true') {
-      const from = location?.state?.from?.pathname || '/internship-results';
-      navigate(from, { replace: true });
+    const role = localStorage.getItem('role');
+
+    if (isAuthenticated === 'true' && role) {
+      // ✅ Auto redirect if already logged in
+      if (role === "admin") {
+        navigate("/admin-dashboard", { replace: true });
+      } else {
+        navigate("/landing-page", { replace: true });
+      }
     }
 
-    // Load language preference
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage) {
       setCurrentLanguage(savedLanguage);
     }
 
-    // Check for account lockout
     const lockout = localStorage.getItem('accountLockout');
     if (lockout) {
       const lockoutData = JSON.parse(lockout);
@@ -53,7 +56,6 @@ const Login = () => {
       }
     }
 
-    // Load login attempts
     const attempts = localStorage.getItem('loginAttempts');
     if (attempts) {
       setLoginAttempts(parseInt(attempts, 10));
@@ -70,45 +72,50 @@ const Login = () => {
     setError('');
 
     try {
-      // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // Check mock credentials
-      const isValidCredentials = Object.values(mockCredentials)?.some(
-        cred => cred?.email === formData?.email && cred?.password === formData?.password
-      );
+      // ✅ Check which role matches
+      let role = null;
+      Object.entries(mockCredentials).forEach(([key, cred]) => {
+        if (cred.email === formData?.email && cred.password === formData?.password) {
+          role = key;
+        }
+      });
 
-      if (isValidCredentials) {
-        // Successful login
+      if (role) {
         const userData = {
           email: formData?.email,
-          name: formData?.email?.split('@')?.[0]?.charAt(0)?.toUpperCase() + formData?.email?.split('@')?.[0]?.slice(1),
+          name:
+            formData?.email?.split('@')?.[0]?.charAt(0)?.toUpperCase() +
+            formData?.email?.split('@')?.[0]?.slice(1),
+          role,
           loginTime: new Date()?.toISOString()
         };
 
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userData', JSON.stringify(userData));
-        
+        localStorage.setItem('role', role);
+
         if (formData?.rememberMe) {
           localStorage.setItem('rememberUser', 'true');
         }
 
-        // Clear login attempts
         localStorage.removeItem('loginAttempts');
         localStorage.removeItem('accountLockout');
 
-        // Navigate to intended destination
-        const from = location?.state?.from?.pathname || '/internship-results';
-        navigate(from, { replace: true });
+        // ✅ Redirect by role
+        if (role === "admin") {
+          navigate("/admin-dashboard", { replace: true });
+        } else {
+          navigate("/landing-page", { replace: true });
+        }
       } else {
-        // Failed login
         const newAttempts = loginAttempts + 1;
         setLoginAttempts(newAttempts);
         localStorage.setItem('loginAttempts', newAttempts?.toString());
 
         if (newAttempts >= 5) {
-          // Lock account for 15 minutes
-          const lockUntil = Date.now() + (15 * 60 * 1000);
+          const lockUntil = Date.now() + 15 * 60 * 1000;
           setIsLocked(true);
           setLockoutTime(lockUntil);
           localStorage.setItem('accountLockout', JSON.stringify({ until: lockUntil }));
@@ -129,21 +136,22 @@ const Login = () => {
     setError('');
 
     try {
-      // Simulate social login
       await new Promise(resolve => setTimeout(resolve, 2000));
 
       const userData = {
         email: `user@${provider}.com`,
         name: `${provider?.charAt(0)?.toUpperCase() + provider?.slice(1)} User`,
         provider: provider,
+        role: "student", // default role for social logins
         loginTime: new Date()?.toISOString()
       };
 
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('userData', JSON.stringify(userData));
+      localStorage.setItem('role', "student");
 
-      const from = location?.state?.from?.pathname || '/internship-results';
-      navigate(from, { replace: true });
+      // Social logins → always student
+      navigate("/internship-results", { replace: true });
     } catch (err) {
       setError(`${provider} login failed. Please try again.`);
     } finally {
@@ -151,26 +159,26 @@ const Login = () => {
     }
   };
 
-  const handleBiometricLogin = async (credential) => {
+  const handleBiometricLogin = async () => {
     setIsLoading(true);
     setError('');
 
     try {
-      // Simulate biometric authentication
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       const userData = {
         email: 'biometric@user.com',
         name: 'Biometric User',
         authMethod: 'biometric',
+        role: "student",
         loginTime: new Date()?.toISOString()
       };
 
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('userData', JSON.stringify(userData));
+      localStorage.setItem('role', "student");
 
-      const from = location?.state?.from?.pathname || '/internship-results';
-      navigate(from, { replace: true });
+      navigate("/internship-results", { replace: true });
     } catch (err) {
       setError('Biometric authentication failed. Please try again.');
     } finally {
@@ -179,7 +187,6 @@ const Login = () => {
   };
 
   const handleVoiceResult = (transcript) => {
-    // Simple voice command processing
     const lowerTranscript = transcript?.toLowerCase();
     if (lowerTranscript?.includes('login') || lowerTranscript?.includes('sign in')) {
       document.querySelector('button[type="submit"]')?.click();
@@ -191,54 +198,36 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <Header />
-      
+
       <main className="pt-16 pb-8">
         <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-card rounded-xl shadow-modal border border-border p-8 animate-fade-in">
-            {/* Header */}
             <LoginHeader />
 
-            {/* Language Switcher */}
             <div className="flex justify-center mt-6 mb-8">
               <LanguageSwitcher />
             </div>
 
-            {/* Security Notice */}
-            <SecurityNotice 
+            <SecurityNotice
               attempts={loginAttempts}
               isLocked={isLocked}
               lockoutTime={lockoutTime}
             />
 
-            {/* Login Form */}
-            <LoginForm 
-              onLogin={handleLogin}
-              isLoading={isLoading}
-              error={error}
-            />
+            <LoginForm onLogin={handleLogin} isLoading={isLoading} error={error} />
 
-            {/* Social Login */}
             <div className="mt-6">
-              <SocialLogin 
-                onSocialLogin={handleSocialLogin}
-                isLoading={isLoading}
-              />
+              <SocialLogin onSocialLogin={handleSocialLogin} isLoading={isLoading} />
             </div>
 
-            {/* Biometric Login */}
-            <BiometricLogin 
-              onBiometricLogin={handleBiometricLogin}
-              isLoading={isLoading}
-            />
+            <BiometricLogin onBiometricLogin={handleBiometricLogin} isLoading={isLoading} />
 
-            {/* Register Prompt */}
             <RegisterPrompt />
           </div>
         </div>
       </main>
 
-      {/* Voice Input Toggle */}
-      <VoiceInputToggle 
+      <VoiceInputToggle
         onVoiceResult={handleVoiceResult}
         onVoiceStart={() => {}}
         onVoiceEnd={() => {}}
